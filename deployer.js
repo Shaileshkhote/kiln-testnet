@@ -2,7 +2,7 @@
 const fs = require('fs');
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
-const Factory = require('./build/contracts/TokenFactory.json');
+const Factory = require('./build/contracts/DeflationaryTokenFactory.json');
 
 
 function get_data(_message) {
