@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "./TokenContract.sol";
 
 
-contract TokenFactory {
+contract DeflationaryTokenFactory {
 
     event TokenCreated(
         address TokenAddress
@@ -18,10 +18,10 @@ contract TokenFactory {
         owner=_owner;
     }
 
-    function newToken(string memory _name, string memory _symbol,uint256 _supply, address _minter)
+    function newToken(string memory _name, string memory _symbol,uint256 _supply, address _minter, uint8 _transferFee)
         public
     {
-        TokenContract token = new TokenContract(_name, _symbol, _supply, _minter);
+        DeflationaryTokenContract token = new DeflationaryTokenContract(_name, _symbol, _supply, _minter,_transferFee);
         tokenName[address(token)]=_name;
         tokensCreated.push(address(token));
         emit TokenCreated(address(token));

@@ -16,5 +16,8 @@
     "solc": "^0.8.13"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "truffle-plugin-verify": "^0.5.25"
+  }
 }
