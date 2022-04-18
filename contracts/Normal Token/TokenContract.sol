@@ -10,6 +10,10 @@ contract TokenContract is ERC20 {
 
     address public minter;
     uint256 public supply;
+
+    event Mint(address _recipent, uint256 _amount);
+    event SetMinter(address _minter);
+
     constructor(
         string memory _name,
         string memory _symbol,
@@ -21,7 +25,7 @@ contract TokenContract is ERC20 {
 
     }
 
-            modifier onlyMinter() {
+         modifier onlyMinter() {
         require(msg.sender == minter, "Not Minter");
         
         _;
@@ -35,12 +39,16 @@ contract TokenContract is ERC20 {
 
     function mintTokens(uint256 _amount) external onlyMinter() checkSupply(_amount) {
         _mint(msg.sender, _amount);
+
+        emit Mint(msg.sender, _amount);
     }
 
 
 
     function setMinter(address _minter) external onlyMinter() {
         minter=_minter;
+
+        emit SetMinter(_minter);
     }
 
 
