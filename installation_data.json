@@ -1,0 +1,15 @@
+{
+  "private_key": {
+    "alice": ""
+  },
+  "public_key": {
+    "alice": ""
+  },
+  "contract_address": {
+    "Factory": "",
+    "Factory$i": ""
+  },
+  "provider": {
+    "rpc_endpoint": "https://rpc.kiln.themerge.dev"
+  }
+}
