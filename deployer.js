@@ -2,7 +2,7 @@
 const fs = require('fs');
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
-const Factory = require('./build/contracts/TokenFactory.json');
+const Factory = require('./build/contracts/GenesisToken.json');
 
 
 function get_data(_message) {
@@ -44,10 +44,11 @@ var URL = "";
   const web3 = new Web3(provider);
   await web3.eth.net.isListening();
   console.log('Web3 is connected.');
-  console.log("Private keys: " + privateKeys);
   let accounts = await web3.eth.getAccounts();
   console.log(`accounts: ${JSON.stringify(accounts)}`);
 
+
+for(var i=0;i<101;i++){
 
 
   let FactoryContract;
@@ -55,21 +56,21 @@ var URL = "";
                               .deploy({
                                 data: Factory.bytecode, 
                                 arguments: [
-                                  "0x939bC583367958f2b8a62A203Aa9C6e6d5FAb2A9"
                                 ]})
                               .send({
                                 from: accounts[0],
-                                 gas: 10000000,
-                                 gasPrice: 10000000000,
-                                 chainId:97
+
                               })
-  console.log(`Factory contract deployed at ${FactoryContract.options.address}`);
-  console.log(`Please store this Factory address for future use ^^^`);
-  data_object.contract_address.Factory = FactoryContract.options.address;
+  console.log(`Token contract deployed at ${FactoryContract.options.address}`);
+  console.log(`Please store this Token address for future use ^^^`);
+  data_object.contract_address.Token = FactoryContract.options.address;
 
  
   let data_to_write = JSON.stringify(data_object, null, 2);
   await write_data(data_to_write);
+
+}
+
 
 
   await provider.engine.stop();
